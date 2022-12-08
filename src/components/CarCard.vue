@@ -4,7 +4,7 @@
     <h5>{{ car.make }} | {{ car.model }} | {{ car.year }}</h5>
     <h5>${{ car.price }}</h5>
     <div class="p-2 text-start">{{ car.description }}</div>
-    <button v-if="(car.creatorId == account.id)" @click="removeCar(car.id)"
+    <button v-if="(car.creatorId == account.id)" @click.stop="removeCar(car.id)"
       class="btn btn-danger delete-btn rounded-pill"><i class="  px-2 mdi mdi-delete-forever"></i></button>
     <div v-if="car.creator" class="creator text-end p-1">
       <img :src="car.creator.picture" alt="">

@@ -35,7 +35,9 @@
       <label for="" class="form-label">ImgUrl</label>
       <input type="url" class="form-control" v-model="editable.imgUrl" name="" id="" aria-describedby="helpId"
         placeholder="">
-      <img :src="editable.imgUrl" class="img-fluid" alt="">
+      <div class="d-flex justify-content-center mt-2">
+        <img :src="editable.imgUrl" class="img-prev" alt="">
+      </div>
     </div>
     <div class="mb-3 col-12">
       <label for="" class="form-label">Description</label>
@@ -91,7 +93,7 @@ export default {
         // editable.value = {}
         Pop.toast('edited Car', 'success')
         // NOTE emit tells the parent this event has happened
-        emit('carEdited')
+        emit('houseEdited')
       } catch (error) {
         Pop.error(error)
         logger.error(error)
@@ -113,5 +115,8 @@ export default {
 
 
 <style lang="scss" scoped>
-
+.img-prev {
+  max-height: 30vh;
+  max-width: 30vh;
+}
 </style>

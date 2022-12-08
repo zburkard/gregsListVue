@@ -20,12 +20,19 @@
             <p>Bedrooms: {{ house.bedrooms }}</p>
             <p>Bathrooms: {{ house.bathrooms }}</p>
           </div>
+
         </div>
         <div class="back">
           <div class="inner">
             <span>{{ house.description }}</span>
             <p>Levels: {{ house.levels }}</p>
             <p>${{ house.price }}</p>
+            <button v-if="(house.creatorId == account.id)" @click.stop="removeHouse(house.id)"
+              class="btn btn-danger delete-btn rounded-pill"><i class="  px-2 mdi mdi-delete-forever"></i></button>
+            <div v-if="house.creator" class="creator p-1 d-flex justify-content-center">
+              <h5>Posted By: {{ house.creator.name }}</h5>
+              <img :src="house.creator.picture" alt="">
+            </div>
           </div>
         </div>
       </div>
@@ -39,13 +46,14 @@ import { computed, reactive, onMounted } from 'vue';
 import { logger } from "../utils/Logger.js";
 import { useRouter } from "vue-router";
 import { housesService } from "../services/HousesService.js";
+import Pop from "../utils/Pop.js";
 export default {
   props: { house: { type: Object, required: true } },
   setup(props) {
     const router = useRouter()
     return {
       account: computed(() => AppState.account),
-      async removeCar() {
+      async removeHouse() {
         // note with props the id here is unused
         try {
           // NOTE you can pass the id from the template OR
@@ -107,6 +115,21 @@ h1 {
   width: calc(25% - 2rem);
   margin: 1rem;
   cursor: pointer;
+}
+
+.creator {
+
+  img {
+    height: 30px;
+    border-radius: 50em;
+    margin-right: .25em;
+  }
+}
+
+.delete-btn {
+  position: absolute;
+  top: 3px;
+  right: 3px;
 }
 
 .container {

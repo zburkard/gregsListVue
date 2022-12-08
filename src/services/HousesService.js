@@ -24,22 +24,22 @@ class HousesService {
     AppState.houses.push(res.data)
   }
 
-  async editHouse(carData) {
-    logger.log(carData)
-    const res = await api.put('api/cars/' + carData.id, carData)
-    logger.log('[editCar]', res.data)
+  async editHouse(houseData) {
+    logger.log(houseData)
+    const res = await api.put('api/houses/' + houseData.id, houseData)
+    logger.log('[editHouse]', res.data)
   }
 
   async removeHouse(id) {
     // logger.log('deleteing', id)
-    const res = await api.delete('api/cars/' + id)
-    logger.log('[removeCar]', res.data)
+    const res = await api.delete('api/houses/' + id)
+    logger.log('[removeHouse]', res.data)
     // NOTE should this be only one line? NO
     // AppState.cars.splice(AppState.cars.findIndex(c => c.id == id), 1)
     // a little better cause there steps to it that can be debugged cleaner
-    let index = AppState.cars.findIndex(c => c.id == id)
+    let index = AppState.houses.findIndex(h => h.id == id)
     if (index >= 0) {
-      AppState.splice(index, 1)
+      AppState.houses.splice(index, 1)
     }
   }
 

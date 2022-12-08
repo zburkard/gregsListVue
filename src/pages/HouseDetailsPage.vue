@@ -20,7 +20,7 @@
     <div v-else class="row">
       <!-- props to pass car data  -->
       <!-- @carEdited is a custom event that happens with CarForm emits `carEdited` -->
-      <!-- <CarForm :carData="car" @carEdited="(editMode = false)" /> -->
+      <HouseForm :houseData="house" @houseEdited="(editMode = false)" />
       <!-- <button class="btn btn-success" @click="editCar">save <i class="mdi mdi-floppy"></i></button> -->
     </div>
   </div>
