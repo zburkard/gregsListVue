@@ -28,10 +28,10 @@
             <p>Levels: {{ house.levels }}</p>
             <p>${{ house.price }}</p>
             <button v-if="(house.creatorId == account.id)" @click.stop="removeHouse(house.id)"
-              class="btn btn-danger delete-btn rounded-pill"><i class="  px-2 mdi mdi-delete-forever"></i></button>
+              class="btn btn-danger delete-btn rounded-pill mx-2"><i class="  px-2 mdi mdi-delete-forever"></i></button>
             <div v-if="house.creator" class="creator p-1 d-flex justify-content-center">
-              <h5>Posted By: {{ house.creator.name }}</h5>
-              <img :src="house.creator.picture" alt="">
+              
+              <h5>Posted By: <img :src="house.creator.picture" alt="">{{ house.creator.name }}</h5>
             </div>
           </div>
         </div>
